@@ -31,6 +31,9 @@ function contentFromForm(formData: FormData): SiteContent {
       skills_label: value(formData, 'home.skills_label'),
       skills_title: value(formData, 'home.skills_title'),
       skills_body: value(formData, 'home.skills_body'),
+      gallery_label: value(formData, 'home.gallery_label'),
+      gallery_title: value(formData, 'home.gallery_title'),
+      gallery_body: value(formData, 'home.gallery_body'),
       writeups_label: value(formData, 'home.writeups_label'),
       writeups_title: value(formData, 'home.writeups_title'),
       all_posts_label: value(formData, 'home.all_posts_label')

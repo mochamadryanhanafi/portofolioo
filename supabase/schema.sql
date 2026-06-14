@@ -72,6 +72,16 @@ create table if not exists site_content (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists gallery_images (
+  id uuid primary key default gen_random_uuid(),
+  title text not null,
+  image_url text not null,
+  caption text default '',
+  sort_order integer not null default 0,
+  status text not null default 'published' check (status in ('draft', 'published')),
+  created_at timestamptz not null default now()
+);
+
 alter table profiles enable row level security;
 alter table projects enable row level security;
 alter table project_images enable row level security;
@@ -79,6 +89,7 @@ alter table posts enable row level security;
 alter table certificates enable row level security;
 alter table contact_messages enable row level security;
 alter table site_content enable row level security;
+alter table gallery_images enable row level security;
 
 create policy "Public published projects"
   on projects for select
@@ -109,3 +120,7 @@ create policy "Public profile"
 create policy "Public site content"
   on site_content for select
   using (true);
+
+create policy "Public published gallery images"
+  on gallery_images for select
+  using (status = 'published');

@@ -1,6 +1,7 @@
 import type {
   Certificate,
   ContactMessage,
+  GalleryImage,
   Post,
   Profile,
   Project,
@@ -132,6 +133,39 @@ export const contactMessages: ContactMessage[] = [
   }
 ];
 
+export const galleryImages: GalleryImage[] = [
+  {
+    id: 'gallery-1',
+    title: 'Workspace setup',
+    image_url:
+      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80',
+    caption: 'A clean development workspace for building fullstack web apps.',
+    sort_order: 1,
+    status: 'published',
+    created_at: '2026-04-01T08:00:00.000Z'
+  },
+  {
+    id: 'gallery-2',
+    title: 'Dashboard detail',
+    image_url:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
+    caption: 'Dashboard views focused on clarity and fast scanning.',
+    sort_order: 2,
+    status: 'published',
+    created_at: '2026-04-02T08:00:00.000Z'
+  },
+  {
+    id: 'gallery-3',
+    title: 'Planning notes',
+    image_url:
+      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80',
+    caption: 'Build notes, content planning, and product thinking.',
+    sort_order: 3,
+    status: 'published',
+    created_at: '2026-04-03T08:00:00.000Z'
+  }
+];
+
 export const defaultSiteContent: SiteContent = {
   brand: 'Porto Web',
   nav: {
@@ -157,6 +191,9 @@ export const defaultSiteContent: SiteContent = {
     skills_label: 'Skills',
     skills_title: 'Selected stack',
     skills_body: profile.bio,
+    gallery_label: 'Gallery',
+    gallery_title: 'Photos from the work',
+    gallery_body: 'A small visual archive of workspace moments, project screenshots, and process notes.',
     writeups_label: 'Write-ups',
     writeups_title: 'Latest notes',
     all_posts_label: 'All posts'

@@ -2,6 +2,7 @@
   import {
     Award,
     FileText,
+    Images,
     FolderKanban,
     Inbox,
     LayoutDashboard,
@@ -14,6 +15,7 @@
   const links = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
     { href: '/admin/content', label: 'Content', icon: FileText },
+    { href: '/admin/gallery', label: 'Gallery', icon: Images },
     { href: '/admin/projects', label: 'Projects', icon: FolderKanban },
     { href: '/admin/blog', label: 'Blog', icon: PenLine },
     { href: '/admin/certificates', label: 'Certificates', icon: Award },

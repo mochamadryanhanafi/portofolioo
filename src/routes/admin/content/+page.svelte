@@ -50,6 +50,8 @@
       {@render Field('All projects label', 'home.all_projects_label', content.home.all_projects_label)}
       {@render Field('Skills label', 'home.skills_label', content.home.skills_label)}
       {@render Field('Skills title', 'home.skills_title', content.home.skills_title)}
+      {@render Field('Gallery label', 'home.gallery_label', content.home.gallery_label)}
+      {@render Field('Gallery title', 'home.gallery_title', content.home.gallery_title)}
       {@render Field('Write-ups label', 'home.writeups_label', content.home.writeups_label)}
       {@render Field('Write-ups title', 'home.writeups_title', content.home.writeups_title)}
       {@render Field('All posts label', 'home.all_posts_label', content.home.all_posts_label)}
@@ -63,6 +65,7 @@
     {/if}
     {@render Textarea('Headline', 'home.headline', content.home.headline)}
     {@render Textarea('Skills body', 'home.skills_body', content.home.skills_body)}
+    {@render Textarea('Gallery body', 'home.gallery_body', content.home.gallery_body)}
   </section>
 
   <section class="rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">

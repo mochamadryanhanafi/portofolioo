@@ -33,6 +33,14 @@ export const certificateSchema = z.object({
   image_url: optionalUrl
 });
 
+export const galleryImageSchema = z.object({
+  title: z.string().trim().min(2),
+  image_url: z.string().trim().url(),
+  caption: z.string().trim().default(''),
+  sort_order: z.coerce.number().int().min(0).default(0),
+  status: z.enum(['draft', 'published']).default('published')
+});
+
 export const contactSchema = z.object({
   name: z.string().trim().min(2),
   email: z.string().trim().email(),

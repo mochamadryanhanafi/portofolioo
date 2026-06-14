@@ -62,6 +62,27 @@
   </div>
 </section>
 
+<section class="mx-auto max-w-6xl px-4 py-12">
+  <div class="mb-6 max-w-2xl">
+    <p class="text-sm font-semibold uppercase tracking-wide text-[#2f6f63]">{data.siteContent.home.gallery_label}</p>
+    <h2 class="mt-2 text-3xl font-bold text-[#17211c]">{data.siteContent.home.gallery_title}</h2>
+    <p class="mt-3 leading-7 text-[#526158]">{data.siteContent.home.gallery_body}</p>
+  </div>
+  <div class="grid auto-rows-[220px] gap-4 md:grid-cols-3">
+    {#each data.galleryImages as image, index}
+      <figure class="group relative overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm {index === 0 ? 'md:col-span-2 md:row-span-2' : ''}">
+        <img class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]" src={image.image_url} alt={image.title} />
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#111713]/85 to-transparent p-4 text-white">
+          <p class="font-semibold">{image.title}</p>
+          {#if image.caption}
+            <p class="mt-1 text-sm leading-5 text-white/82">{image.caption}</p>
+          {/if}
+        </figcaption>
+      </figure>
+    {/each}
+  </div>
+</section>
+
 <section class="mx-auto max-w-6xl px-4 pb-14">
   <div class="mb-6 flex items-end justify-between gap-4">
     <div>

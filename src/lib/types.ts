@@ -66,6 +66,16 @@ export type ContactMessage = {
   created_at: string;
 };
 
+export type GalleryImage = {
+  id: string;
+  title: string;
+  image_url: string;
+  caption: string;
+  sort_order: number;
+  status: 'draft' | 'published';
+  created_at: string;
+};
+
 export type SiteContent = {
   brand: string;
   nav: {
@@ -90,6 +100,9 @@ export type SiteContent = {
     skills_label: string;
     skills_title: string;
     skills_body: string;
+    gallery_label: string;
+    gallery_title: string;
+    gallery_body: string;
     writeups_label: string;
     writeups_title: string;
     all_posts_label: string;
