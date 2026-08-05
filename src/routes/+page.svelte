@@ -25,11 +25,13 @@
       </a>
     </div>
   </div>
-  <img
-    class="aspect-[4/3] w-full rounded-lg object-cover shadow-sm"
-    src={data.siteContent.home.hero_image}
-    alt={data.siteContent.home.hero_image_alt}
-  />
+  {#if data.siteContent.home.hero_image}
+    <img
+      class="aspect-[4/3] w-full rounded-lg object-cover shadow-sm"
+      src={data.siteContent.home.hero_image}
+      alt={data.siteContent.home.hero_image_alt}
+    />
+  {/if}
 </section>
 
 <section class="bg-[#f2f5ee]">
@@ -71,7 +73,9 @@
   <div class="grid auto-rows-[220px] gap-4 md:grid-cols-3">
     {#each data.galleryImages as image, index}
       <figure class="group relative overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm {index === 0 ? 'md:col-span-2 md:row-span-2' : ''}">
-        <img class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]" src={image.image_url} alt={image.title} />
+        {#if image.image_url}
+          <img class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]" src={image.image_url} alt={image.title} />
+        {/if}
         <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#111713]/85 to-transparent p-4 text-white">
           <p class="font-semibold">{image.title}</p>
           {#if image.caption}

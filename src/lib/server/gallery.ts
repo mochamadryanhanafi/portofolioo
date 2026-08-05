@@ -13,7 +13,7 @@ export async function getGalleryImages() {
     .order('sort_order', { ascending: true })
     .order('created_at', { ascending: false });
 
-  if (error || !data?.length) return galleryImages;
+  if (error) return [];
   return data as GalleryImage[];
 }
 
@@ -27,6 +27,6 @@ export async function getAllGalleryImages() {
     .order('sort_order', { ascending: true })
     .order('created_at', { ascending: false });
 
-  if (error) return galleryImages;
+  if (error) return [];
   return (data ?? []) as GalleryImage[];
 }

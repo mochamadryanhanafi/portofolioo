@@ -1,13 +1,41 @@
-import { certificates, contactMessages, posts, projects } from '$lib/data';
+import { createSupabaseAdminClient } from '$lib/server/supabase';
 
-export function load() {
+export async function load() {
+  const supabase = createSupabaseAdminClient();
+  let projectsCount = 0;
+  let publishedProjectsCount = 0;
+  let postsCount = 0;
+  let certificatesCount = 0;
+  let unreadMessagesCount = 0;
+
+  if (supabase) {
+    const [
+      { count: projectsTotal },
+      { count: projectsPublished },
+      { count: postsTotal },
+      { count: certsTotal },
+      { count: unreadMsg }
+    ] = await Promise.all([
+      supabase.from('projects').select('*', { count: 'exact', head: true }),
+      supabase.from('projects').select('*', { count: 'exact', head: true }).eq('status', 'published'),
+      supabase.from('posts').select('*', { count: 'exact', head: true }),
+      supabase.from('certificates').select('*', { count: 'exact', head: true }),
+      supabase.from('contact_messages').select('*', { count: 'exact', head: true }).eq('is_read', false)
+    ]);
+    projectsCount = projectsTotal || 0;
+    publishedProjectsCount = projectsPublished || 0;
+    postsCount = postsTotal || 0;
+    certificatesCount = certsTotal || 0;
+    unreadMessagesCount = unreadMsg || 0;
+  }
+
   return {
     stats: [
-      { label: 'Projects', value: projects.length },
-      { label: 'Published', value: projects.filter((project) => project.status === 'published').length },
-      { label: 'Posts', value: posts.length },
-      { label: 'Certificates', value: certificates.length },
-      { label: 'Unread messages', value: contactMessages.filter((message) => !message.is_read).length }
+      { label: 'Projects', value: projectsCount },
+      { label: 'Published', value: publishedProjectsCount },
+      { label: 'Posts', value: postsCount },
+      { label: 'Certificates', value: certificatesCount },
+      { label: 'Unread messages', value: unreadMessagesCount }
     ]
   };
 }

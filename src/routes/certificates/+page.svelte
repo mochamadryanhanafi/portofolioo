@@ -1,6 +1,5 @@
 <script lang="ts">
   import { ExternalLink } from '@lucide/svelte';
-  import { certificates } from '$lib/data';
 
   let { data } = $props();
 </script>
@@ -11,9 +10,11 @@
     <h1 class="mt-3 text-4xl font-bold text-[#17211c]">{data.siteContent.certificates.title}</h1>
   </div>
   <div class="grid gap-5 md:grid-cols-3">
-    {#each certificates as certificate}
+    {#each data.certificates as certificate}
       <article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
-        <img class="h-44 w-full object-cover" src={certificate.image_url} alt={certificate.title} />
+        {#if certificate.image_url}
+          <img class="h-44 w-full object-cover" src={certificate.image_url} alt={certificate.title} />
+        {/if}
         <div class="space-y-3 p-5">
           <p class="text-sm font-semibold text-[#2f6f63]">{certificate.issuer}</p>
           <h2 class="text-xl font-semibold text-[#17211c]">{certificate.title}</h2>

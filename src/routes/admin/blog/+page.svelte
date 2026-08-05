@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Save } from '@lucide/svelte';
   import { slugify } from '$lib/utils/slug';
+  import { enhance } from '$app/forms';
 
   let { data, form } = $props();
 </script>
@@ -12,6 +13,9 @@
 {#if form?.success}
   <p class="mb-4 rounded-md bg-[#e7efe5] px-3 py-2 text-sm font-medium text-[#2f6f63]">Post saved.</p>
 {/if}
+{#if form?.error}
+  <p class="mb-4 rounded-md bg-[#f8e7df] px-3 py-2 text-sm font-medium text-[#9d4424]">{form.error}</p>
+{/if}
 <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
   <div class="rounded-lg border border-[#d9ded3] bg-white shadow-sm">
     {#each data.posts as post}
@@ -21,7 +25,7 @@
       </div>
     {/each}
   </div>
-  <form method="POST" action="?/save" class="grid gap-4 rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
+  <form method="POST" action="?/save" use:enhance class="grid gap-4 rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
     <label class="grid gap-2 text-sm font-medium text-[#334139]">
       Title
       <input class="focus-ring rounded-md border border-[#cad3c6] px-3 py-2" name="title" oninput={(event) => {

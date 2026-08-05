@@ -11,4 +11,7 @@
 {#if form?.success}
   <p class="mb-4 rounded-md bg-[#e7efe5] px-3 py-2 text-sm font-medium text-[#2f6f63]">Project saved.</p>
 {/if}
+{#if form?.error}
+  <p class="mb-4 rounded-md bg-[#f8e7df] px-3 py-2 text-sm font-medium text-[#9d4424]">{form.error}</p>
+{/if}
 <ProjectForm />

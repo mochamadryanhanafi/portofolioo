@@ -18,8 +18,10 @@
       </a>
     </div>
   </div>
-  <img class="aspect-[16/9] w-full rounded-lg object-cover shadow-sm" src={data.project.cover_image} alt={data.project.title} />
-  <div class="prose prose-neutral mt-8 max-w-none">
+  {#if data.project.cover_image}
+    <img class="aspect-[16/9] w-full rounded-lg object-cover shadow-sm" src={data.project.cover_image} alt={data.project.title} />
+  {/if}
+  <div class="prose prose-neutral mt-8 max-w-none whitespace-pre-wrap">
     <p class="text-lg leading-8 text-[#42514a]">{data.project.content}</p>
   </div>
   {#if data.project.video_url}

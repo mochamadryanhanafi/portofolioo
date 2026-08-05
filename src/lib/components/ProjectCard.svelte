@@ -7,7 +7,9 @@
 
 <article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
   <a href={`/projects/${project.slug}`}>
-    <img class="h-52 w-full object-cover" src={project.cover_image} alt={project.title} />
+    {#if project.cover_image}
+      <img class="h-52 w-full object-cover" src={project.cover_image} alt={project.title} />
+    {/if}
   </a>
   <div class="space-y-4 p-5">
     <div class="flex items-center justify-between gap-3">

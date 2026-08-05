@@ -1,9 +1,14 @@
 import { fail } from '@sveltejs/kit';
-import { posts } from '$lib/data';
 import { createSupabaseAdminClient } from '$lib/server/supabase';
 import { formEntries, postSchema } from '$lib/utils/validation';
 
-export function load() {
+export async function load() {
+  const supabase = createSupabaseAdminClient();
+  let posts = [];
+  if (supabase) {
+    const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
+    if (data) posts = data;
+  }
   return { posts };
 }
 

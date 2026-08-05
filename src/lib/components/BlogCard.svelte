@@ -5,7 +5,9 @@
 </script>
 
 <article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
-  <img class="h-44 w-full object-cover" src={post.cover_image} alt={post.title} />
+  {#if post.cover_image}
+    <img class="h-44 w-full object-cover" src={post.cover_image} alt={post.title} />
+  {/if}
   <div class="space-y-3 p-5">
     <span class="text-xs font-semibold uppercase tracking-wide text-[#2f6f63]">{post.category}</span>
     <h3 class="text-xl font-semibold text-[#17211c]">{post.title}</h3>

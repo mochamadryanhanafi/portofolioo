@@ -1,13 +1,25 @@
-import { certificates, posts, profile, projects, skills } from '$lib/data';
+import { createSupabaseAdminClient } from '$lib/server/supabase';
 import { getGalleryImages } from '$lib/server/gallery';
-
+import { profile as defaultProfile, skills as defaultSkills } from '$lib/data';
 export async function load() {
-  return {
-    profile,
-    skills,
-    featuredProjects: projects.filter((project) => project.status === 'published' && project.featured),
-    galleryImages: await getGalleryImages(),
-    posts: posts.filter((post) => post.status === 'published').slice(0, 3),
-    certificates: certificates.slice(0, 3)
-  };
+  const supabase = createSupabaseAdminClient();
+  let featuredProjects = [], posts = [], certificates = [], profile = defaultProfile, skills = defaultSkills;
+  if (supabase) {
+    const [
+      { data: proj },
+      { data: p },
+      { data: certs },
+      { data: prof }
+    ] = await Promise.all([
+      supabase.from('projects').select('*').eq('status', 'published').eq('featured', true).order('created_at', { ascending: false }),
+      supabase.from('posts').select('*').eq('status', 'published').order('created_at', { ascending: false }).limit(3),
+      supabase.from('certificates').select('*').order('created_at', { ascending: false }).limit(3),
+      supabase.from('profiles').select('*').limit(1).maybeSingle()
+    ]);
+    if (proj) featuredProjects = proj;
+    if (p) posts = p;
+    if (certs) certificates = certs;
+    if (prof) profile = prof;
+  }
+  return { profile, skills, featuredProjects, galleryImages: await getGalleryImages(), posts, certificates };
 }

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Save } from '@lucide/svelte';
+  import { enhance } from '$app/forms';
 
   let { data, form } = $props();
   const content = $derived(data.siteContent);
@@ -18,7 +19,7 @@
   <p class="mb-4 rounded-md bg-[#f8e7df] px-3 py-2 text-sm font-medium text-[#9d4424]">{form.error}</p>
 {/if}
 
-<form method="POST" action="?/save" class="space-y-5">
+<form method="POST" action="?/save" use:enhance class="space-y-5">
   <section class="rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
     <h2 class="mb-4 text-xl font-semibold text-[#17211c]">Brand</h2>
     {@render Field('Brand name', 'brand', content.brand)}

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Save, Trash2 } from '@lucide/svelte';
+  import { enhance } from '$app/forms';
 
   let { data, form } = $props();
 </script>
@@ -28,7 +29,7 @@
             <p class="text-sm text-[#526158]">{image.caption}</p>
             <p class="mt-1 text-xs text-[#526158]">Order {image.sort_order} · {image.status}</p>
           </div>
-          <form method="POST" action="?/delete">
+          <form method="POST" action="?/delete" use:enhance>
             <input type="hidden" name="id" value={image.id} />
             <button class="focus-ring inline-flex items-center gap-2 rounded-md border border-[#f0c6b6] px-3 py-2 text-sm font-semibold text-[#9d4424] hover:bg-[#f8e7df]">
               <Trash2 size={15} />
@@ -40,7 +41,7 @@
     {/each}
   </div>
 
-  <form method="POST" action="?/save" class="h-fit rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
+  <form method="POST" action="?/save" use:enhance class="h-fit rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
     <h2 class="mb-4 text-xl font-semibold text-[#17211c]">New photo</h2>
     <div class="grid gap-4">
       <label class="grid gap-2 text-sm font-medium text-[#334139]">

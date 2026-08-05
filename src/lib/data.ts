@@ -10,7 +10,7 @@ import type {
 } from '$lib/types';
 
 export const profile: Profile = {
-  id: 'profile-1',
+  id: '11111111-1111-4111-a111-111111111111',
   full_name: 'Archy Portfolio',
   headline: 'Fullstack developer building tidy web products with SvelteKit and Supabase.',
   bio: 'I design and build pragmatic software: fast public experiences, thoughtful admin tools, and maintainable database-backed workflows.',
@@ -33,7 +33,7 @@ export const skills = [
 
 export const projects: Project[] = [
   {
-    id: 'project-1',
+    id: '22222222-2222-4222-a222-222222222222',
     title: 'Recruiter-ready Portfolio CMS',
     slug: 'portfolio-cms',
     short_description:
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     updated_at: '2026-02-01T08:00:00.000Z'
   },
   {
-    id: 'project-2',
+    id: '33333333-3333-4333-a333-333333333333',
     title: 'Insight Dashboard',
     slug: 'insight-dashboard',
     short_description:
@@ -74,8 +74,8 @@ export const projects: Project[] = [
 
 export const projectImages: ProjectImage[] = [
   {
-    id: 'image-1',
-    project_id: 'project-1',
+    id: '44444444-4444-4444-a444-444444444444',
+    project_id: '22222222-2222-4222-a222-222222222222',
     image_url:
       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80',
     caption: 'Admin workspace for content publishing',
@@ -83,8 +83,8 @@ export const projectImages: ProjectImage[] = [
     created_at: '2026-02-01T08:00:00.000Z'
   },
   {
-    id: 'image-2',
-    project_id: 'project-1',
+    id: '55555555-5555-4555-a555-555555555555',
+    project_id: '22222222-2222-4222-a222-222222222222',
     image_url:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
     caption: 'Public project discovery and detail pages',
@@ -95,7 +95,7 @@ export const projectImages: ProjectImage[] = [
 
 export const posts: Post[] = [
   {
-    id: 'post-1',
+    id: '66666666-6666-4666-a666-666666666666',
     title: 'Designing a portfolio that is easy to maintain',
     slug: 'maintainable-portfolio',
     content:
@@ -111,7 +111,7 @@ export const posts: Post[] = [
 
 export const certificates: Certificate[] = [
   {
-    id: 'cert-1',
+    id: '77777777-7777-4777-a777-777777777777',
     title: 'Fullstack Web Development',
     issuer: 'Independent Course',
     issue_date: '2026-01-15',
@@ -124,7 +124,7 @@ export const certificates: Certificate[] = [
 
 export const contactMessages: ContactMessage[] = [
   {
-    id: 'message-1',
+    id: '88888888-8888-4888-a888-888888888888',
     name: 'Demo Recruiter',
     email: 'recruiter@example.com',
     message: 'Interested in discussing a SvelteKit role.',
@@ -135,7 +135,7 @@ export const contactMessages: ContactMessage[] = [
 
 export const galleryImages: GalleryImage[] = [
   {
-    id: 'gallery-1',
+    id: '99999999-9999-4999-a999-999999999999',
     title: 'Workspace setup',
     image_url:
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80',
@@ -145,7 +145,7 @@ export const galleryImages: GalleryImage[] = [
     created_at: '2026-04-01T08:00:00.000Z'
   },
   {
-    id: 'gallery-2',
+    id: 'aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa',
     title: 'Dashboard detail',
     image_url:
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80',
@@ -155,7 +155,7 @@ export const galleryImages: GalleryImage[] = [
     created_at: '2026-04-02T08:00:00.000Z'
   },
   {
-    id: 'gallery-3',
+    id: 'bbbbbbbb-bbbb-4bbb-abbb-bbbbbbbbbbbb',
     title: 'Planning notes',
     image_url:
       'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80',

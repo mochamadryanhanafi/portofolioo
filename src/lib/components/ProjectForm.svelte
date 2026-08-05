@@ -1,12 +1,13 @@
 <script lang="ts">
   import { Save } from '@lucide/svelte';
   import { slugify } from '$lib/utils/slug';
+  import { enhance } from '$app/forms';
   import type { Project } from '$lib/types';
 
   export let project: Partial<Project> = {};
 </script>
 
-<form method="POST" action="?/save" class="grid gap-4 rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
+<form method="POST" action="?/save" use:enhance class="grid gap-4 rounded-lg border border-[#d9ded3] bg-white p-5 shadow-sm">
   <label class="grid gap-2 text-sm font-medium text-[#334139]">
     Title
     <input class="focus-ring rounded-md border border-[#cad3c6] px-3 py-2" name="title" value={project.title ?? ''} oninput={(event) => {

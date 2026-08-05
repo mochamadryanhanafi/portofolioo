@@ -91,10 +91,12 @@ alter table contact_messages enable row level security;
 alter table site_content enable row level security;
 alter table gallery_images enable row level security;
 
+drop policy if exists "Public published projects" on projects;
 create policy "Public published projects"
   on projects for select
   using (status = 'published');
 
+drop policy if exists "Public project images" on project_images;
 create policy "Public project images"
   on project_images for select
   using (
@@ -105,22 +107,27 @@ create policy "Public project images"
     )
   );
 
+drop policy if exists "Public published posts" on posts;
 create policy "Public published posts"
   on posts for select
   using (status = 'published');
 
+drop policy if exists "Public certificates" on certificates;
 create policy "Public certificates"
   on certificates for select
   using (true);
 
+drop policy if exists "Public profile" on profiles;
 create policy "Public profile"
   on profiles for select
   using (true);
 
+drop policy if exists "Public site content" on site_content;
 create policy "Public site content"
   on site_content for select
   using (true);
 
+drop policy if exists "Public published gallery images" on gallery_images;
 create policy "Public published gallery images"
   on gallery_images for select
   using (status = 'published');

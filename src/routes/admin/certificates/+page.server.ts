@@ -1,9 +1,14 @@
 import { fail } from '@sveltejs/kit';
-import { certificates } from '$lib/data';
 import { createSupabaseAdminClient } from '$lib/server/supabase';
 import { certificateSchema, formEntries } from '$lib/utils/validation';
 
-export function load() {
+export async function load() {
+  const supabase = createSupabaseAdminClient();
+  let certificates = [];
+  if (supabase) {
+    const { data } = await supabase.from('certificates').select('*').order('created_at', { ascending: false });
+    if (data) certificates = data;
+  }
   return { certificates };
 }
 
