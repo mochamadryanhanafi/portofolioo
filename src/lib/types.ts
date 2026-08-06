@@ -92,6 +92,7 @@ export type SiteContent = {
     headline: string;
     hero_image: string;
     hero_image_alt: string;
+    cv_url: string;
     primary_button: string;
     contact_button: string;
     featured_label: string;

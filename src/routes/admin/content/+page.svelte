@@ -44,6 +44,7 @@
       {@render Field('Title', 'home.title', content.home.title)}
       {@render Field('Hero image URL', 'home.hero_image', content.home.hero_image)}
       {@render Field('Hero image alt text', 'home.hero_image_alt', content.home.hero_image_alt)}
+      {@render Field('CV URL', 'home.cv_url', content.home.cv_url)}
       {@render Field('Primary button', 'home.primary_button', content.home.primary_button)}
       {@render Field('Contact button', 'home.contact_button', content.home.contact_button)}
       {@render Field('Featured label', 'home.featured_label', content.home.featured_label)}

@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { ExternalLink } from '@lucide/svelte';
+  import { ArrowUpRight, Award, ExternalLink } from '@lucide/svelte';
+  import { fadeUp } from '$lib/actions/fade-up';
 
   let { data } = $props();
 </script>
@@ -11,9 +12,9 @@
   </div>
   <div class="grid gap-5 md:grid-cols-3">
     {#each data.certificates as certificate}
-      <article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
+      <article use:fadeUp class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
         {#if certificate.image_url}
-          <img class="h-44 w-full object-cover" src={certificate.image_url} alt={certificate.title} />
+          <img class="h-48 w-full object-cover" src={certificate.image_url} alt={certificate.title} loading="lazy" decoding="async" />
         {/if}
         <div class="space-y-3 p-5">
           <p class="text-sm font-semibold text-[#2f6f63]">{certificate.issuer}</p>

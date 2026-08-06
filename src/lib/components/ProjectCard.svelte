@@ -1,14 +1,15 @@
 <script lang="ts">
   import { ArrowUpRight, GitBranch } from '@lucide/svelte';
+  import { fadeUp } from '$lib/actions/fade-up';
   import type { Project } from '$lib/types';
 
   export let project: Project;
 </script>
 
-<article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
+<article use:fadeUp class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
   <a href={`/projects/${project.slug}`}>
     {#if project.cover_image}
-      <img class="h-52 w-full object-cover" src={project.cover_image} alt={project.title} />
+      <img class="h-52 w-full object-cover" src={project.cover_image} alt={project.title} loading="lazy" decoding="async" />
     {/if}
   </a>
   <div class="space-y-4 p-5">

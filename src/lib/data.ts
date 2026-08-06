@@ -183,6 +183,7 @@ export const defaultSiteContent: SiteContent = {
     hero_image:
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
     hero_image_alt: 'Developer workspace',
+    cv_url: profile.cv_url,
     primary_button: 'View projects',
     contact_button: 'Contact',
     featured_label: 'Featured',

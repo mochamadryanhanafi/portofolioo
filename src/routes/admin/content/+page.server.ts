@@ -23,6 +23,7 @@ function contentFromForm(formData: FormData): SiteContent {
       headline: value(formData, 'home.headline'),
       hero_image: value(formData, 'home.hero_image'),
       hero_image_alt: value(formData, 'home.hero_image_alt'),
+      cv_url: value(formData, 'home.cv_url'),
       primary_button: value(formData, 'home.primary_button'),
       contact_button: value(formData, 'home.contact_button'),
       featured_label: value(formData, 'home.featured_label'),

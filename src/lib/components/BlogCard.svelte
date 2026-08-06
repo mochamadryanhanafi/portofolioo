@@ -1,12 +1,13 @@
 <script lang="ts">
+  import { fadeUp } from '$lib/actions/fade-up';
   import type { Post } from '$lib/types';
 
   export let post: Post;
 </script>
 
-<article class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
+<article use:fadeUp class="overflow-hidden rounded-lg border border-[#d9ded3] bg-white shadow-sm">
   {#if post.cover_image}
-    <img class="h-44 w-full object-cover" src={post.cover_image} alt={post.title} />
+    <img class="h-44 w-full object-cover" src={post.cover_image} alt={post.title} loading="lazy" decoding="async" />
   {/if}
   <div class="space-y-3 p-5">
     <span class="text-xs font-semibold uppercase tracking-wide text-[#2f6f63]">{post.category}</span>
