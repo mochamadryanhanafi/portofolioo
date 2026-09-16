@@ -3,6 +3,7 @@
 	"name": "portofolioo",
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"compatibility_date": "2026-09-15",
+	"compatibility_flags": ["nodejs_als"],
 	"observability": {
 		"enabled": true
 	},
