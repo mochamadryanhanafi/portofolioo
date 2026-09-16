@@ -14,11 +14,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   // We use unsafe-inline for styles/scripts because SvelteKit sometimes generates inline styles/scripts for hydration.
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com",
+    "connect-src 'self' https://syvdzmpmgggpzgzksbjq.supabase.co https://cloudflareinsights.com",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: https://images.unsplash.com https://syvdzmpmgggpzgzksbjq.supabase.co",
     "font-src 'self' data:",
-    "connect-src 'self' https://syvdzmpmgggpzgzksbjq.supabase.co",
     "frame-src 'self' https://www.youtube.com",
     "object-src 'none'",
     "base-uri 'self'"

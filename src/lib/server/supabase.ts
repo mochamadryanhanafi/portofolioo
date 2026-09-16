@@ -4,14 +4,33 @@ import { env as privateEnv } from '$env/dynamic/private';
 import { env as publicEnv } from '$env/dynamic/public';
 import type { Cookies } from '@sveltejs/kit';
 
-const supabaseUrl = publicEnv.PUBLIC_SUPABASE_URL ?? '';
-const supabaseAnonKey = publicEnv.PUBLIC_SUPABASE_ANON_KEY ?? '';
-const supabaseServiceRoleKey = privateEnv.SUPABASE_SERVICE_ROLE_KEY ?? '';
+// Read env inside functions (not module scope) — on Cloudflare Workers the
+// module is evaluated once per isolate and may run before the request's
+// AsyncLocalStorage context is available, which would cache empty values.
+function getSupabaseUrl() {
+  return publicEnv.PUBLIC_SUPABASE_URL ?? '';
+}
 
-export const supabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+function getSupabaseAnonKey() {
+  return publicEnv.PUBLIC_SUPABASE_ANON_KEY ?? '';
+}
+
+function getSupabaseServiceRoleKey() {
+  return privateEnv.SUPABASE_SERVICE_ROLE_KEY ?? '';
+}
+
+export function isSupabaseConfigured() {
+  return Boolean(getSupabaseUrl() && getSupabaseAnonKey());
+}
+
+// Backwards-compatible constant for callers that only need a snapshot at
+// import time (e.g. non-request contexts). Prefer isSupabaseConfigured().
+export const supabaseConfigured = isSupabaseConfigured();
 
 export function createSupabaseServerClient(cookies: Cookies) {
-  if (!supabaseConfigured) return null;
+  const supabaseUrl = getSupabaseUrl();
+  const supabaseAnonKey = getSupabaseAnonKey();
+  if (!supabaseUrl || !supabaseAnonKey) return null;
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
@@ -32,6 +51,8 @@ export function createSupabaseServerClient(cookies: Cookies) {
 }
 
 export function createSupabaseAdminClient() {
+  const supabaseUrl = getSupabaseUrl();
+  const supabaseServiceRoleKey = getSupabaseServiceRoleKey();
   if (!supabaseUrl || !supabaseServiceRoleKey) return null;
   return createClient(supabaseUrl, supabaseServiceRoleKey);
 }
